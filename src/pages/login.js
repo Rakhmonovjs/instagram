@@ -33,7 +33,9 @@ export default function Login(){
       
     }, [ref])  
 
-    const handleSubmit = async (values, actions) => {
+    const handleSubmit = async(values, e) => {
+      e.preventDefault();
+      console.log(values)
       await login(values.username, values.password)
         // await login(...values)
         // alert('ee?')
@@ -63,10 +65,15 @@ export default function Login(){
             username: '',
             password: ''
           }}
-          onSubmit={handleSubmit}
+          onSubmit={(values, { setSubmitting }) => {
+            setTimeout(() => {
+              alert(JSON.stringify(values, null, 2));
+              setSubmitting(false);
+            }, 400);
+          }}
         >
-          {({isSubmitting, isValid,dirty, values}) => (
-            <Form className="grid gap-y-1.5">
+          {({isSubmitting, isValid, dirty, values}) => (
+            <Form className="grid gap-y-1.5" onSubmit={(e) => handleSubmit(values, e)}>
               {/* <peer>{JSON.stringify(dirty)}</peer> */}
               <Input name="username"  label="Phone number, username or email"/>
               <Input type="password" name="password" label="Password"/>
@@ -90,7 +97,7 @@ export default function Login(){
         
       </div>
       <div className="bg-white border p-4 text-sm text-center">
-        Don't have an account? <a href="#" className="font-semibold text-brand"> Sing up </a>
+        Don't have an account? <a href="#" className="font-semibold text-brand"> Sign up </a>
       </div>
     </div> 
     </div>

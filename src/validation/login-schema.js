@@ -9,6 +9,6 @@ import yup from "./validate"
 
 // export default LoginSchema
 export const LoginSchema =()=> yup.object().shape({
-    username: yup.string().username(),
+    username: yup.string().required(),
     password: yup.string().min(6).max(225).required(),
-  });
+});
