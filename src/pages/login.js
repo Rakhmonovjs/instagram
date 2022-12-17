@@ -33,9 +33,17 @@ export default function Login(){
       
     }, [ref])  
 
-    const handleSubmit = async(values, e) => {
-      e.preventDefault();
-      console.log(values)
+    const images = [
+      'https://www.instagram.com/images/instagram/xig/homepage/screenshots/screenshot1.png?__d=www',
+      'https://www.instagram.com/images/instagram/xig/homepage/screenshots/screenshot2.png?__d=www',
+      'https://www.instagram.com/images/instagram/xig/homepage/screenshots/screenshot4.png?__d=www',
+      'https://www.instagram.com/images/instagram/xig/homepage/screenshots/screenshot3.png?__d=www'
+    ]
+
+
+    const handleSubmit = async(values, actions) => {
+      // e.preventDefault();
+      // console.log(values)
       await login(values.username, values.password)
         // await login(...values)
         // alert('ee?')
@@ -48,11 +56,12 @@ export default function Login(){
     <div className="h-full w-full flex flex-wrap overflow-auto items-center gap-x-8 justify-center">
       <div className="hidden md:block w-[380px] h-[581px]  bg-logo-pattern relative bg-[length:468.32px_634.15px] bg-[top_left_-46px] ">
         <div className="w-[250px] h-[538px] absolute top-[27px] right-[18px]" ref={ref}>
-          <img className="w-full h-full absolute top-0 left-0 opacity-0 transition-opacity duration-1000 ease-linear" src="https://www.instagram.com/images/instagram/xig/homepage/screenshots/screenshot1.png?__d=www" alt=""/>
-          <img className="w-full h-full absolute top-0 left-0 opacity-0 transition-opacity duration-1000 ease-linear" src="https://www.instagram.com/images/instagram/xig/homepage/screenshots/screenshot2.png?__d=www" alt=""/>
-          <img className="w-full h-full absolute top-0 left-0 opacity-0 transition-opacity duration-1000 ease-linear" src="https://www.instagram.com/images/instagram/xig/homepage/screenshots/screenshot4.png?__d=www" alt=""/>
-          <img className="w-full h-full absolute top-0 left-0 opacity-0 transition-opacity duration-1000 ease-linear" src="https://www.instagram.com/images/instagram/xig/homepage/screenshots/screenshot3.png?__d=www" alt=""/>
-        </div>
+          {images.map((image, key) => (
+            <img className="w-full h-full absolute top-0 left-0 opacity-0 transition-opacity duration-1000 ease-linear"
+            src={images}
+            alt=""/>
+          ))}
+          </div>
       </div>
     <div className="w-[350px] grid gap-y-3">
       <div className="bg-white border px-[40px] pt-10 pb-6">

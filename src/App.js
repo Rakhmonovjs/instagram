@@ -14,7 +14,7 @@ function App() {
    useEffect(() => {
       let timeout = setTimeout(() => {
          setRedirect(true)
-      }, 2000)
+      }, 1000)
       return () => {
          clearTimeout(timeout)
       }
