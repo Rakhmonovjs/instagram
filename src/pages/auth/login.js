@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { AiFillFacebook } from 'react-icons/ai';
 import { useLocation, useNavigate } from "react-router-dom";
-import Input from "../components/input";
-import { login } from "../firebase";
+import Input from "../../components/input";
+import { login } from "../../firebase";
 import {Formik, Form } from "formik";
-import { LoginSchema } from "../validation/login-schema";
+import { LoginSchema } from "../../validation/login-schema";
 
 
 export default function Login(){

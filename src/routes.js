@@ -1,7 +1,7 @@
 import PrivateRoute from "./components/PrivateRoute";
 import AuthLayout from "./pages/auth";
 import Home from "./pages/home";
-import Login from "./pages/login";
+import Login from "./pages/auth/login";
 
 
 const routes = [

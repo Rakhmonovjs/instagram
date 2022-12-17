@@ -24,7 +24,7 @@ export default function Search() {
             })}>
                 <AiFillCloseCircle/>
             </button>
-            {open ? 'open' : 'close'}
+            {/* {open ? 'open' : 'close'} */}
         </div>
     )
 }
