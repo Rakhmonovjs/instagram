@@ -21,7 +21,7 @@ export default function Input({label, type = 'text', ...props}){
     return (
         <label className="block relative bg-zinc-50 border rounded-sm focus-within:border-gray-400">
             <input type={inputType} className={classNames({
-                "px-2 outline-none text-xs w-full h-[38px]": true,
+                "px-2 outline-none text-xs bg-transparent w-full h-[38px]": true,
                 "pt-[10px]": field.value
             })} {...field} {...props}/>
             <small className={classNames({
@@ -34,6 +34,7 @@ export default function Input({label, type = 'text', ...props}){
                     {show ? 'Hide' : 'Show'}
                 </div>
             )}
+            {meta.error}
         </label>
     )
 }
