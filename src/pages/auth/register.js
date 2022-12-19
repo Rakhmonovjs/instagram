@@ -15,17 +15,20 @@ export default function Register(){
     const navigate = useNavigate()
     const location = useLocation()
 
-     const handleSubmit = async(values, actions) => {
+     const handleSubmit = async(values, e) => {
+      e.preventDefault();
+      console.log(values)
       // e.preventDefault();
       // console.log(values)
-      const response = await register(values)
+      const response = await register(values.email, values.password, values.full_name, values.username )
         // await login(...values)
         // alert('ee?')
-        if(response){
-          navigate(location.state?.return_url || '/', {
-            replace: true
-          })
-      }
+        navigate(location.state?.return_url || '/', {
+          replace: true
+        })
+        // if(response){
+          
+      // }
     }
 
   return (
@@ -50,13 +53,12 @@ export default function Register(){
             username: '',
             password: ''
           }}
-          onSubmit={handleSubmit}
-        //   onSubmit={(values, { setSubmitting }) => {
-        //     setTimeout(() => {
-        //       alert(JSON.stringify(values, null, 2));
-        //       setSubmitting(false);
-        //     }, 1000);
-        //   }}
+          onSubmit={(values, { setSubmitting }) => {
+            setTimeout(() => {
+              alert(JSON.stringify(values, null, 2));
+              setSubmitting(false);
+            }, 1000);
+          }}
         >
           {({isSubmitting, isValid, dirty, values}) => (
             <Form className="grid gap-y-1.5" onSubmit={(e) => handleSubmit(values, e)}>              
