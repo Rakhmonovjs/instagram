@@ -10,7 +10,7 @@ const firebaseConfig = {
   authDomain: "asadbekramm.firebaseapp.com",
   projectId: "asadbekramm",
   storageBucket: "asadbekramm.appspot.com",
-  messagingSenderId: "1087464291269",
+  messagingSenderId: "asadbekramm",
   appId: "1:1087464291269:web:492d9c0c8db298d2d729ac",
   measurementId: "G-PXY18S2RPD"
 };
@@ -37,9 +37,13 @@ export const login = async ( email, password) => {
 export const register = async ( email, password, full_name, username) => {
     try {
        const response = await createUserWithEmailAndPassword(auth, email, password)
+       
+    //    console.log('FULL_NAME', full_name)
+    //    console.log('USERNAME', username)
+       
        await setDoc(doc(db, "users", response.user.uid),{
-        full_name,
-        username,
+        full_name: full_name,
+        username: username,
         followers: [],
         following: [],
         notification: []

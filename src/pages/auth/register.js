@@ -15,20 +15,31 @@ export default function Register(){
     const navigate = useNavigate()
     const location = useLocation()
 
-     const handleSubmit = async(values, e) => {
-      e.preventDefault();
+    //  const handleSubmit = async(values, e) => {
+    //   e.preventDefault();
+    //   console.log(values)
+    //   // e.preventDefault();
+    //   // console.log(values)
+    //   const response = await register(values.email, values.password, values.full_name, values.username )
+    //     // await login(...values)
+    //     // alert('ee?')
+    //     navigate(location.state?.return_url || '/', {
+    //       replace: true
+    //     })
+    //     // if(response){
+          
+    //   // }
+    // }
+
+    const handleSubmit = async (values, e) => {
+      
+      const response =await register(values.email, values.password, values.full_name, values.username)
       console.log(values)
-      // e.preventDefault();
-      // console.log(values)
-      const response = await register(values.email, values.password, values.full_name, values.username )
-        // await login(...values)
-        // alert('ee?')
-        navigate(location.state?.return_url || '/', {
+      if(response) {
+        navigate(location.state?.return_url || '/',{
           replace: true
         })
-        // if(response){
-          
-      // }
+      }
     }
 
   return (
