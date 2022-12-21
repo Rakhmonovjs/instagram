@@ -19,9 +19,17 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db= getFirestore()
 
-onAuthStateChanged(auth, user => {
+onAuthStateChanged(auth, async user => {
     if(user) {
-        userHandle(user)
+        const dbUser = await getDoc(doc(db, "users", user.uid))
+        let data ={
+            uid:user.uid,
+            fullName: user.displayName,
+            email: user.email,
+            emailVerified: user.emailVerified,
+            ...dbUser.data()
+        }
+        userHandle(data)
     } else {
     userHandle(user || false)
     }
@@ -29,7 +37,7 @@ onAuthStateChanged(auth, user => {
 
 export const login = async ( email, password) => {
     try {
-       const response = await signInWithEmailAndPassword(auth, email, password)
+       return await signInWithEmailAndPassword(auth, email, password)
     }catch (err) {
         toast.error(err.code)
     }

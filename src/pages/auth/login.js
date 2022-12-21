@@ -1,20 +1,30 @@
 import { useEffect, useRef, useState } from "react";
 import { AiFillFacebook } from 'react-icons/ai';
-import { useLocation, useNavigate,Link } from "react-router-dom";
+import { useLocation, Navigate,Link } from "react-router-dom";
 import Input from "../../components/input";
 import { login } from "../../firebase";
 import {Formik, Form } from "formik";
 import { LoginSchema } from "../../validation/login-schema";
 import Button from "../../components/Button";
 import Separator from "../../components/Separator";
+import {useSelector} from "react-redux";
 
 
 export default function Login(){
     
-  
-    const navigate = useNavigate()
+    const user = useSelector(state => state.auth.user)
+    // const navigate = useNavigate()
     const location = useLocation()
     const ref = useRef()
+
+    // useEffect(() => {
+    //   if(user) {
+    //     return <Navigate to={location.state?.return_url || '/'} replace={true}/>
+    //     navigate(location.state?.return_url || '/', {
+    //       replace: true
+    //     })
+    //   }
+    // }, [user]);
 
     // const enable = username && password
   
@@ -42,18 +52,23 @@ export default function Login(){
       'https://www.instagram.com/images/instagram/xig/homepage/screenshots/screenshot3.png?__d=www'
     ]
 
+    if(user) {
+       return <Navigate to={location.state?.return_url || '/'} replace={true}/>
+    }  
 
     const handleSubmit = async(values, actions) => {
       // e.preventDefault();
       // console.log(values)
-      const response = await login(values.username, values.password)
+      // const response = await login(values.username, values.password)
+      await login(values.username, values.password)
+      // console.log(response)
         // await login(...values)
         // alert('ee?')
-        if(response){
-          navigate(location.state?.return_url || '/', {
-            replace: true
-          })
-      }
+        // if(response){
+        //   navigate(location.state?.return_url || '/', {
+        //     replace: true
+        //   })
+        // }
     }
 
   return (

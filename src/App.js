@@ -20,13 +20,17 @@ function App() {
    //    }
    // }, []);
 
+   // console.log(
+   //    /^[a-z0-9\.\_]+$/i.test('hello_attempt')
+   // )
+
    if(user === null){
       return <Loader/>
    }
 
    return (
       <>
-
+         {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
          <Toaster position="top-right"/>
          {showRoutes}
       </>
