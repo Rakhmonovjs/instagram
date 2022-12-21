@@ -2,7 +2,7 @@ import {initializeApp} from "firebase/app";
 import {getAuth,onAuthStateChanged, updateProfile, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth";
 import { toast } from "react-hot-toast";
 import { userHandle } from "./unils";
-import {getFirestore, dov, setDoc, doc} from "firebase/firestore"
+import {getFirestore, getDoc, setDoc, doc} from "firebase/firestore"
 
 
 const firebaseConfig = {
@@ -36,22 +36,36 @@ export const login = async ( email, password) => {
 }
 export const register = async ( email, password, full_name, username) => {
     try {
+
+        const user = await getDoc(doc(db, "username", username))
+        if(user.exists()){
+            toast.error(`${username} Username is already in use by someone else.! `)
+        } else{
+
        const response = await createUserWithEmailAndPassword(auth, email, password)
        
-    //    console.log('FULL_NAME', full_name)
-    //    console.log('USERNAME', username)
-       
-       await setDoc(doc(db, "users", response.user.uid),{
-        full_name: full_name,
-        username: username,
-        followers: [],
-        following: [],
-        notification: []
-       }) 
-       await updateProfile(auth.currentUser, {
-            displayName: full_name
-        })
-        return response.user
+        if(response.user){
+                    //    console.log('FULL_NAME', full_name)
+                    //    console.log('USERNAME', username)
+            
+                await setDoc(doc(db, "username", username), {
+                user_id: response.user.uid
+                })
+            
+                await setDoc(doc(db, "users", response.user.uid),{
+                    full_name: full_name,
+                    username: username,
+                    followers: [],
+                    following: [],
+                    notification: []
+                }) 
+                await updateProfile(auth.currentUser, {
+                    displayName: full_name
+                })
+                return response.user
+            }
+        }   
+
     }catch (err) {
         toast.error(err.code)
     }

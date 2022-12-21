@@ -15,32 +15,32 @@ export default function Register(){
     const navigate = useNavigate()
     const location = useLocation()
 
-    //  const handleSubmit = async(values, e) => {
-    //   e.preventDefault();
-    //   console.log(values)
-    //   // e.preventDefault();
-    //   // console.log(values)
-    //   const response = await register(values.email, values.password, values.full_name, values.username )
-    //     // await login(...values)
-    //     // alert('ee?')
-    //     navigate(location.state?.return_url || '/', {
-    //       replace: true
-    //     })
-    //     // if(response){
-          
-    //   // }
-    // }
-
-    const handleSubmit = async (values, e) => {
-      
-      const response =await register(values.email, values.password, values.full_name, values.username)
+     const handleSubmit = async(values, e) => {
+      e.preventDefault();
       console.log(values)
-      if(response) {
-        navigate(location.state?.return_url || '/',{
+      // e.preventDefault();
+      // console.log(values)
+      const response = await register(values.email, values.password, values.full_name, values.username )
+        // await login(...values)
+        // alert('ee?')
+        navigate(location.state?.return_url || '/', {
           replace: true
         })
-      }
+        // if(response){
+          
+      // }
     }
+
+    // const handleSubmit = async (values, e) => {
+    //   e.preventDefault();
+    //   const response =await register(values.email, values.password, values.full_name, values.username)
+    //   // console.log(values)
+    //   // if(response) {
+    //     navigate(location.state?.return_url || '/',{
+    //       replace: true
+    //     })
+    //   // }
+    // }
 
   return (
     <div className="w-[350px] grid gap-y-3">
