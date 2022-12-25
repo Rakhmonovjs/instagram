@@ -43,7 +43,8 @@ export default function Register(){
     // }
 
   return (
-    <div className="w-[350px] grid gap-y-3">
+    <div className=" bg-gradient-to-r from-cyan-500 to-blue-500 h-full w-full flex flex-wrap overflow-auto items-center gap-x-8 justify-center" >
+    <div className=" w-[350px] grid gap-y-3">
       <div className="bg-white border px-[40px] pt-10 pb-6">
         <a href="#" className="flex justify-center mb-4">
           <img className="h-[51px]" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/800px-Instagram_logo.svg.png" alt=""/>
@@ -94,6 +95,7 @@ export default function Register(){
       Have an account? <Link to="/auth/login" className="font-semibold text-brand"> Log in </Link>
       </div>
     </div> 
+    </div>
   );
 }
 

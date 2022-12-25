@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { logout } from "../firebase";
+import Icon from "./Icon";
 import Search from "./Search";
 
 
@@ -14,7 +15,20 @@ export default function Header() {
 
                 <Search/>
 
-                <nav>
+                <nav className="flex items-center gap-x-5">
+                <NavLink to="/">
+						{({ isActive }) => <Icon name={isActive ? 'home-filled' : 'home'} size={24} />}
+					</NavLink>
+                    <NavLink to="/">
+						<Icon name="new" size={24} />
+						
+					</NavLink>
+					<NavLink to="/">
+						<Icon name="explore" size={24} />
+					</NavLink>
+					<NavLink to="/">
+						<Icon name="heart" size={24} />
+					</NavLink>
                     <button onClick={logout}>
                         Logout
                     </button>

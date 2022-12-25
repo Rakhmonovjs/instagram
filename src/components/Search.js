@@ -2,7 +2,7 @@
 import classNames from "classnames";
 import { useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
-import Icon from "./icon";
+import Icon from "./Icon";
 
 
 export default function Search() {

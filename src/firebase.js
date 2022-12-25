@@ -6,14 +6,15 @@ import {getFirestore, getDoc, setDoc, doc} from "firebase/firestore"
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDqzvpm0rC4aoZ0grFG73CW5XF3kSiZTCc",
-  authDomain: "asadbekramm.firebaseapp.com",
-  projectId: "asadbekramm",
-  storageBucket: "asadbekramm.appspot.com",
-  messagingSenderId: "asadbekramm",
-  appId: "1:1087464291269:web:492d9c0c8db298d2d729ac",
-  measurementId: "G-PXY18S2RPD"
-};
+    apiKey: "AIzaSyDqzvpm0rC4aoZ0grFG73CW5XF3kSiZTCc",
+    authDomain: "asadbekramm.firebaseapp.com",
+    databaseURL: "https://asadbekramm-default-rtdb.firebaseio.com",
+    projectId: "asadbekramm",
+    storageBucket: "asadbekramm.appspot.com",
+    messagingSenderId: "1087464291269",
+    appId: "1:1087464291269:web:00821b23628b4303d729ac",
+    measurementId: "G-CQ6L1M8F5Z"
+  };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
