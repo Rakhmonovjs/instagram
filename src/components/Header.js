@@ -3,8 +3,8 @@ import { logout } from "../firebase";
 import Icon from "./Icon";
 import Search from "./Search";
 
-
-
+//headery
+//iconda hato beradi
 export default function Header() {
     return(
         <header className=" bg-white border-b border-gray-300">
